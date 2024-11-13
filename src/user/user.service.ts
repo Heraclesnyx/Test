@@ -41,6 +41,9 @@ export class UserService {
     return this.prisma.user.findMany();
   }
 
+  async getByEmail(email: string): Promise<User> {
+    return this.prisma.user.findUnique({ where: { email } });
+  }
   //Utile pour filtrer dans le controlleur prendre ceux qu'on a besoin pour la pagination entre skip,cursor,take....
   async getAll(params: {
     skip?: number;
